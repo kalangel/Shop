@@ -2,7 +2,7 @@
 
 import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { RoundedBox } from '@react-three/drei';
+import { RoundedBox, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { useFabric, useMetal } from './materials';
 import { experienceProgress } from '@/lib/store';
@@ -64,6 +64,17 @@ export default function Hoodie() {
   const pointer = useRef({ x: 0, y: 0 });
 
   const outer = useFabric('#232326', { roughness: 0.82, sheen: 0.5, sheenColor: '#8a8a90' });
+
+  // acid-wash fabric scanned from the campaign photography
+  const wash = useTexture('/textures/acid-wash.jpg');
+  useMemo(() => {
+    wash.wrapS = wash.wrapT = THREE.RepeatWrapping;
+    wash.repeat.set(1.7, 1.7);
+    wash.colorSpace = THREE.SRGBColorSpace;
+    outer.map = wash;
+    outer.color.set('#96969b'); // map multiplies against a muted base to stay matte
+    outer.needsUpdate = true;
+  }, [wash, outer]);
   const inner = useFabric('#121214', { roughness: 1, sheen: 0.1, wobble: 0.008 });
   const rib = useFabric('#2c2c30', { roughness: 0.95, sheen: 0.2, wobble: 0.004 });
   const cord = useFabric('#cbbfa9', { roughness: 0.9, sheen: 0.1, wobble: 0.003 });

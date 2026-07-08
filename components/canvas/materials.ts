@@ -48,7 +48,7 @@ export function createFabricMaterial(color: string, opts: FabricOptions = {}) {
         }`
       );
   };
-  mat.customProgramCacheKey = () => 'mono-fabric';
+  mat.customProgramCacheKey = () => `mono-fabric${mat.map ? '-map' : ''}`;
 
   return mat;
 }

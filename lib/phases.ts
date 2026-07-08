@@ -23,8 +23,8 @@ interface CameraKey {
 
 /** hero orbit → approach → flight through the exploded layers → reveal orbit */
 const KEYS: CameraKey[] = [
-  { t: 0.0, az: 0.1, r: 5.9, y: 0.5, ly: 0.1, fov: 38 },
-  { t: 0.15, az: 0.65, r: 5.0, y: 0.4, ly: 0.1, fov: 38 },
+  { t: 0.0, az: 0.1, r: 7.4, y: 0.6, ly: 0.1, fov: 38 },
+  { t: 0.15, az: 0.65, r: 5.4, y: 0.4, ly: 0.1, fov: 38 },
   { t: 0.34, az: 2.1, r: 3.5, y: 0.2, ly: 0.15, fov: 44 },
   { t: 0.46, az: 3.35, r: 3.1, y: 1.25, ly: 0.45, fov: 50 },
   { t: 0.58, az: 4.55, r: 3.3, y: -0.55, ly: -0.1, fov: 50 },
