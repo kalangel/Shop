@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0c0c0c;
+  --bone: #f4f2ee;
+}
+
+html {
+  scroll-behavior: initial;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-sans), 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #f4f2ee;
+  color: #0c0c0c;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* ---------- film grain ---------- */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: -100%;
+  z-index: 100;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 320px 320px;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  animation: grain-shift 0.9s steps(4) infinite;
+}
+
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 3%); }
+  50% { transform: translate(3%, -2%); }
+  75% { transform: translate(-3%, -3%); }
+  100% { transform: translate(2%, 2%); }
+}
+
+/* ---------- editorial helpers ---------- */
+.text-outline {
+  -webkit-text-stroke: 1px rgba(244, 242, 238, 0.35);
+  color: transparent;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+}
+
+/* ---------- marquee ---------- */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* ---------- ambient gradient drift ---------- */
+@keyframes drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(6%, -4%, 0) scale(1.12); }
+  66% { transform: translate3d(-5%, 5%, 0) scale(0.94); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+.animate-drift {
+  animation: drift 18s ease-in-out infinite;
+}
+
+.animate-drift-slow {
+  animation: drift 30s ease-in-out infinite reverse;
+}
+
+/* ---------- custom cursor ---------- */
+@media (pointer: fine) {
+  .cursor-none-fine {
+    cursor: none;
+  }
+  .cursor-none-fine a,
+  .cursor-none-fine button {
+    cursor: none;
+  }
+}
+
+/* ---------- underline link ---------- */
+.link-line {
+  position: relative;
+}
+.link-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-line:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
