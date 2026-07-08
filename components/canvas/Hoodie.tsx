@@ -6,7 +6,7 @@ import { RoundedBox, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { useFabric, useMetal } from './materials';
 import { experienceProgress } from '@/lib/store';
-import { computePhases } from '@/lib/phases';
+import { computePhases, seg } from '@/lib/phases';
 
 interface PartDef {
   /** where the piece flies when the garment is deconstructed */
@@ -101,8 +101,14 @@ export default function Hoodie() {
     pointer.current.x = THREE.MathUtils.lerp(pointer.current.x, state.pointer.x, 0.04);
     pointer.current.y = THREE.MathUtils.lerp(pointer.current.y, state.pointer.y, 0.04);
 
+    // the model stays out of the hero — it materialises as the
+    // scroll hands over from the campaign photography
+    const presence = seg(experienceProgress.value, 0.1, 0.2);
+    g.visible = presence > 0.02;
+    g.scale.setScalar(0.7 + 0.3 * presence);
+
     // idle breath + subtle mouse parallax
-    g.position.y = Math.sin(t * 0.55) * 0.05;
+    g.position.y = Math.sin(t * 0.55) * 0.05 - (1 - presence) * 0.7;
     g.rotation.y = pointer.current.x * 0.12 + Math.sin(t * 0.18) * 0.05;
     g.rotation.x = -pointer.current.y * 0.07;
   });
