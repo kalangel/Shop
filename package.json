@@ -2,7 +2,7 @@
   "name": "atelier-noir",
   "version": "1.0.0",
   "private": true,
-  "description": "MONO — Future Essentials. An immersive luxury fashion experience.",
+  "description": "MONO — Future Essentials. A 3D fashion concept store built with Next.js and React Three Fiber.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

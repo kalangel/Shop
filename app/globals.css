@@ -38,7 +38,6 @@ body {
   height: 0px;
 }
 
-/* ---------- film grain ---------- */
 .grain::after {
   content: '';
   position: fixed;
@@ -60,7 +59,6 @@ body {
   100% { transform: translate(2%, 2%); }
 }
 
-/* ---------- editorial helpers ---------- */
 .text-outline {
   -webkit-text-stroke: 1px rgba(244, 242, 238, 0.35);
   color: transparent;
@@ -70,7 +68,6 @@ body {
   writing-mode: vertical-rl;
 }
 
-/* ---------- marquee ---------- */
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -80,7 +77,6 @@ body {
   animation: marquee 28s linear infinite;
 }
 
-/* ---------- ambient gradient drift ---------- */
 @keyframes drift {
   0% { transform: translate3d(0, 0, 0) scale(1); }
   33% { transform: translate3d(6%, -4%, 0) scale(1.12); }
@@ -96,7 +92,6 @@ body {
   animation: drift 30s ease-in-out infinite reverse;
 }
 
-/* ---------- custom cursor ---------- */
 @media (pointer: fine) {
   .cursor-none-fine {
     cursor: none;
@@ -107,7 +102,6 @@ body {
   }
 }
 
-/* ---------- underline link ---------- */
 .link-line {
   position: relative;
 }

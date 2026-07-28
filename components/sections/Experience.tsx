@@ -68,15 +68,12 @@ export default function Experience() {
       };
       window.addEventListener('mousemove', onMove, { passive: true });
 
-      // 01 — approach
       tl.fromTo('.js-approach', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.05 }, 0.17);
       tl.to('.js-approach', { opacity: 0, y: -40, duration: 0.05 }, 0.29);
 
-      // 02 — deconstruction
       tl.fromTo('.js-explode', { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.06 }, 0.38);
       tl.to('.js-explode', { opacity: 0, scale: 1.04, duration: 0.06 }, 0.55);
 
-      // 03 — reveal headline + floating feature labels
       tl.fromTo('.js-reveal-head', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.07 }, 0.73);
       gsap.utils.toArray<HTMLElement>('.js-feature').forEach((el, i) => {
         tl.fromTo(
@@ -103,7 +100,6 @@ export default function Experience() {
       <div className="sticky top-0 h-screen overflow-hidden">
         <ExperienceCanvas />
 
-        {/* ---------- hero ---------- */}
         <div className="js-hero pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center">
           {/* campaign photography — the piece itself, floating */}
           <div className="absolute left-[4%] top-[16%] hidden w-[24vw] max-w-xs md:block lg:left-[12%]">
@@ -195,7 +191,6 @@ export default function Experience() {
           </motion.div>
         </div>
 
-        {/* ---------- 01 approach ---------- */}
         <div className="js-approach pointer-events-none absolute left-6 top-1/2 z-10 max-w-xs -translate-y-1/2 opacity-0 md:left-16">
           <p className="font-sans text-[0.6rem] tracking-wider3 uppercase text-warmgray">01 — Construction</p>
           <p className="mt-4 font-display text-3xl leading-tight text-bone md:text-4xl">
@@ -206,7 +201,6 @@ export default function Experience() {
           </p>
         </div>
 
-        {/* ---------- 02 deconstruction ---------- */}
         <div className="js-explode pointer-events-none absolute inset-x-0 top-[12%] z-10 text-center opacity-0">
           <p className="font-sans text-[0.6rem] tracking-wider3 uppercase text-warmgray">02 — Anatomy</p>
           <p className="mt-3 font-display text-5xl text-bone md:text-7xl">
@@ -215,7 +209,6 @@ export default function Experience() {
           <p className="mt-3 font-sans text-xs tracking-wider2 text-silver">Seven layers. One garment.</p>
         </div>
 
-        {/* ---------- 03 reveal ---------- */}
         <div className="js-reveal-head pointer-events-none absolute inset-x-0 top-[9%] z-10 text-center opacity-0">
           <p className="font-sans text-[0.6rem] tracking-wider3 uppercase text-warmgray">03 — The Piece</p>
           <p className="mt-3 font-display text-5xl text-bone md:text-7xl">
